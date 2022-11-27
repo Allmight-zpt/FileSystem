@@ -1,0 +1,45 @@
+## 端口
+server:
+  port: 8081
+  ##
+  ## 文件服务器配置
+  # 1. windows 文件存储路径
+fs:
+  dir: E:/0_BiShe_Project/FileSystem/EasyFS
+  # 2. linux 文件存储路径
+  #fs.dir=/home/EasyFS
+  uuidName: false
+  useSm: true
+  useNginx: false
+  nginxUrl: http://localhost:80/
+  ##
+  ## json时间格式设置
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy/MM/dd HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 100Mb
+      max-request-size: 100Mb
+  ##
+  ##日志配置
+logging:
+  level:
+    com:
+      wf:
+        easyfs: DEBUG
+djl:
+  # 设定应用种类
+  application-type: OBJECT_DETECTION
+  # 设定输入数据格式, 有的模型支持多种数据格式
+  input-class: java.awt.image.BufferedImage
+  # 设定输出数据格式
+  output-class: ai.djl.modality.cv.output.DetectedObjects
+  # 设定一个筛选器来筛选你的模型
+  model-filter:
+    size: 512
+  #  backbone: mobilenet1.0
+  # 覆写已有的输入输出配置
+  arguments:
+    threshold: 0.5 # 只展示预测结果大于等于 0.5
